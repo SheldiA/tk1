@@ -13,6 +13,7 @@ namespace tk1
     public partial class FormMain : Form
     {
         private EvenParity evenParity;
+        private TableAdjacentClasses tac;
         public FormMain()
         {
             InitializeComponent();
@@ -43,14 +44,20 @@ namespace tk1
         {
             List<string> errorVector = new List<string>();
             List<string> codeWords = new List<string>();
-            for (int i = 1; i < dgv_adjacentClass.RowCount; ++i)
+            for (int i = 0; i < dgv_adjacentClass.RowCount; ++i)
                 errorVector.Add(dgv_adjacentClass[0, i].Value.ToString());
-            for (int i = 1; i < dgv_adjacentClass.ColumnCount; ++i)
+            for (int i = 0; i < dgv_adjacentClass.ColumnCount; ++i)
                 codeWords.Add(dgv_adjacentClass[i,0].Value.ToString());
-            TableAdjacentClasses tac = new TableAdjacentClasses(codeWords, errorVector);
-            for (int j = 0; j < dgv_adjacentClass.ColumnCount - 1; ++j)
-                for (int i = 0; i < dgv_adjacentClass.RowCount - 1; ++i)
-                    dgv_adjacentClass[j + 1, i + 1].Value = tac.Table[i, j];
+            tac = new TableAdjacentClasses(codeWords, errorVector);
+            for (int j = 1; j < dgv_adjacentClass.ColumnCount; ++j)
+                for (int i = 1; i < dgv_adjacentClass.RowCount; ++i)
+                    dgv_adjacentClass[j,i].Value = tac.Table[i, j];
+        }
+
+        private void bt_adjClassesDecode_Click(object sender, EventArgs e)
+        {
+            if(tac != null)
+                lb_adjClassesCodeword.Text = "Codeword : " + tac.Decode(tb_incomingMessage.Text);
         }
     }
 }

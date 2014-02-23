@@ -42,6 +42,10 @@
             this.bt_makeGrid = new System.Windows.Forms.Button();
             this.bt_fill = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
+            this.tb_incomingMessage = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.bt_adjClassesDecode = new System.Windows.Forms.Button();
+            this.lb_adjClassesCodeword = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -118,6 +122,10 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.lb_adjClassesCodeword);
+            this.tabPage2.Controls.Add(this.bt_adjClassesDecode);
+            this.tabPage2.Controls.Add(this.label2);
+            this.tabPage2.Controls.Add(this.tb_incomingMessage);
             this.tabPage2.Controls.Add(this.label1);
             this.tabPage2.Controls.Add(this.bt_fill);
             this.tabPage2.Controls.Add(this.bt_makeGrid);
@@ -190,6 +198,40 @@
             this.label1.TabIndex = 5;
             this.label1.Text = "x";
             // 
+            // tb_incomingMessage
+            // 
+            this.tb_incomingMessage.Location = new System.Drawing.Point(327, 20);
+            this.tb_incomingMessage.Name = "tb_incomingMessage";
+            this.tb_incomingMessage.Size = new System.Drawing.Size(83, 20);
+            this.tb_incomingMessage.TabIndex = 6;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(324, 4);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(122, 13);
+            this.label2.TabIndex = 7;
+            this.label2.Text = "Enter incoming message";
+            // 
+            // bt_adjClassesDecode
+            // 
+            this.bt_adjClassesDecode.Location = new System.Drawing.Point(354, 46);
+            this.bt_adjClassesDecode.Name = "bt_adjClassesDecode";
+            this.bt_adjClassesDecode.Size = new System.Drawing.Size(70, 23);
+            this.bt_adjClassesDecode.TabIndex = 8;
+            this.bt_adjClassesDecode.Text = "Decode";
+            this.bt_adjClassesDecode.UseVisualStyleBackColor = true;
+            this.bt_adjClassesDecode.Click += new System.EventHandler(this.bt_adjClassesDecode_Click);
+            // 
+            // lb_adjClassesCodeword
+            // 
+            this.lb_adjClassesCodeword.AutoSize = true;
+            this.lb_adjClassesCodeword.Location = new System.Drawing.Point(324, 79);
+            this.lb_adjClassesCodeword.Name = "lb_adjClassesCodeword";
+            this.lb_adjClassesCodeword.Size = new System.Drawing.Size(0, 13);
+            this.lb_adjClassesCodeword.TabIndex = 9;
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -225,6 +267,10 @@
         private System.Windows.Forms.TextBox tb_column;
         private System.Windows.Forms.TextBox tb_row;
         private System.Windows.Forms.DataGridView dgv_adjacentClass;
+        private System.Windows.Forms.Label lb_adjClassesCodeword;
+        private System.Windows.Forms.Button bt_adjClassesDecode;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox tb_incomingMessage;
     }
 }
 
