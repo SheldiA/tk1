@@ -1,0 +1,9 @@
+D:\Project c#\tk\tk1\tk1\bin\Debug\tk1.exe.config
+D:\Project c#\tk\tk1\tk1\bin\Debug\tk1.exe
+D:\Project c#\tk\tk1\tk1\bin\Debug\tk1.pdb
+D:\Project c#\tk\tk1\tk1\obj\Debug\tk1.csprojResolveAssemblyReference.cache
+D:\Project c#\tk\tk1\tk1\obj\Debug\tk1.FormMain.resources
+D:\Project c#\tk\tk1\tk1\obj\Debug\tk1.Properties.Resources.resources
+D:\Project c#\tk\tk1\tk1\obj\Debug\tk1.csproj.GenerateResource.Cache
+D:\Project c#\tk\tk1\tk1\obj\Debug\tk1.exe
+D:\Project c#\tk\tk1\tk1\obj\Debug\tk1.pdb
