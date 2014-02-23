@@ -46,10 +46,15 @@
             this.label2 = new System.Windows.Forms.Label();
             this.bt_adjClassesDecode = new System.Windows.Forms.Button();
             this.lb_adjClassesCodeword = new System.Windows.Forms.Label();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.bt_do = new System.Windows.Forms.Button();
+            this.tb_codeWordForLast = new System.Windows.Forms.TextBox();
+            this.rtb_allError = new System.Windows.Forms.RichTextBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_adjacentClass)).BeginInit();
+            this.tabPage3.SuspendLayout();
             this.SuspendLayout();
             // 
             // rtb_message
@@ -100,6 +105,7 @@
             // 
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Location = new System.Drawing.Point(9, 12);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
@@ -232,6 +238,43 @@
             this.lb_adjClassesCodeword.Size = new System.Drawing.Size(0, 13);
             this.lb_adjClassesCodeword.TabIndex = 9;
             // 
+            // tabPage3
+            // 
+            this.tabPage3.Controls.Add(this.rtb_allError);
+            this.tabPage3.Controls.Add(this.tb_codeWordForLast);
+            this.tabPage3.Controls.Add(this.bt_do);
+            this.tabPage3.Location = new System.Drawing.Point(4, 22);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Size = new System.Drawing.Size(523, 168);
+            this.tabPage3.TabIndex = 2;
+            this.tabPage3.Text = "tabPage3";
+            this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // bt_do
+            // 
+            this.bt_do.Location = new System.Drawing.Point(223, 82);
+            this.bt_do.Name = "bt_do";
+            this.bt_do.Size = new System.Drawing.Size(85, 23);
+            this.bt_do.TabIndex = 0;
+            this.bt_do.Text = "button1";
+            this.bt_do.UseVisualStyleBackColor = true;
+            this.bt_do.Click += new System.EventHandler(this.bt_do_Click);
+            // 
+            // tb_codeWordForLast
+            // 
+            this.tb_codeWordForLast.Location = new System.Drawing.Point(223, 43);
+            this.tb_codeWordForLast.Name = "tb_codeWordForLast";
+            this.tb_codeWordForLast.Size = new System.Drawing.Size(99, 20);
+            this.tb_codeWordForLast.TabIndex = 1;
+            // 
+            // rtb_allError
+            // 
+            this.rtb_allError.Location = new System.Drawing.Point(349, 5);
+            this.rtb_allError.Name = "rtb_allError";
+            this.rtb_allError.Size = new System.Drawing.Size(154, 150);
+            this.rtb_allError.TabIndex = 2;
+            this.rtb_allError.Text = "";
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -246,6 +289,8 @@
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_adjacentClass)).EndInit();
+            this.tabPage3.ResumeLayout(false);
+            this.tabPage3.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -271,6 +316,10 @@
         private System.Windows.Forms.Button bt_adjClassesDecode;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox tb_incomingMessage;
+        private System.Windows.Forms.TabPage tabPage3;
+        private System.Windows.Forms.TextBox tb_codeWordForLast;
+        private System.Windows.Forms.Button bt_do;
+        private System.Windows.Forms.RichTextBox rtb_allError;
     }
 }
 

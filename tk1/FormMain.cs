@@ -59,5 +59,19 @@ namespace tk1
             if(tac != null)
                 lb_adjClassesCodeword.Text = "Codeword : " + tac.Decode(tb_incomingMessage.Text);
         }
+
+        private void bt_do_Click(object sender, EventArgs e)
+        {
+            string codeword = tb_codeWordForLast.Text;
+            BinaryArythmetic binaryArythmetic = new BinaryArythmetic();
+            int maxNumber = (int)Math.Pow(2, codeword.Length);
+            for (int i = 0; i < maxNumber; ++i)
+            {
+                string number = Convert.ToString(i,2);
+                rtb_allError.Text += binaryArythmetic.AddBinaryNumber(codeword, number) + '\n';
+            }
+        }
+
+        
     }
 }

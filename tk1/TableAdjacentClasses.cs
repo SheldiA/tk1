@@ -9,6 +9,7 @@ namespace tk1
     class TableAdjacentClasses
     {
         private string[,] table;
+        private BinaryArythmetic binaryArythmetic;
         public string[,] Table
         {
             get
@@ -18,6 +19,7 @@ namespace tk1
         }
         public TableAdjacentClasses(List<string> codewords,List<string> errorVector)
         {
+            binaryArythmetic = new BinaryArythmetic();
             table = new string[errorVector.Count, codewords.Count];
             for (int i = 0; i < errorVector.Count;++i )
                 table[i, 0] = errorVector[i];
@@ -25,7 +27,7 @@ namespace tk1
                 table[0,i] = codewords[i];
             for(int i = 1; i < errorVector.Count; ++i)
                 for(int j = 1; j < codewords.Count; ++j)
-                    table[i,j] = AddBinaryNumber(errorVector[i],codewords[j]);
+                    table[i, j] = binaryArythmetic.AddBinaryNumber(errorVector[i], codewords[j]);
         }
 
         public string Decode(string message)
@@ -35,7 +37,7 @@ namespace tk1
             for (int i = 0; i < table.GetLength(0); ++i )
                 for(int j = 0; j < table.GetLength(1); ++j)
                     if(table[i,j] == message)
-                        return AddBinaryNumber(message,GetLeaderOfAdjacentClass(i,j));
+                        return binaryArythmetic.AddBinaryNumber(message, GetLeaderOfAdjacentClass(i, j));
             return result;
         }
 
@@ -61,16 +63,6 @@ namespace tk1
             return result;
         }
 
-        private string AddBinaryNumber(string first,string second)
-        {
-            int size = Math.Min(first.Length,second.Length);
-            first.Reverse();
-            second.Reverse();
-            string result = "";
-            for (int i = 0; i < size; ++i)
-                result += (first[i] == second[i]) ? '0' : '1';
-            result.Reverse();
-            return result;
-        }
+        
     }
 }
