@@ -12,22 +12,24 @@ namespace tk1
 {
     public partial class FormMain : Form
     {
-        private EvenParity evenParity;
         private TableAdjacentClasses tac;
+        CodeAlgorithmFactory codeAlgorithmFactory;
         public FormMain()
         {
             InitializeComponent();
-            evenParity = new EvenParity();
+            codeAlgorithmFactory = CodeAlgorithmFactory.Instance;
         }
 
         private void bt_getCode_Click(object sender, EventArgs e)
         {
-            rtb_codeword.Text = evenParity.GetCodeWord(rtb_message.Text);
+            Code code = codeAlgorithmFactory.GetCodeAlgorithm(cb_chooseCode.Text);
+            rtb_codeword.Text = code.GetCodeWord(rtb_message.Text);
         }
 
         private void bt_decode_Click(object sender, EventArgs e)
         {
-            lb_decodeResult.Text = evenParity.Decode(rtb_codeword.Text);
+            Code code = codeAlgorithmFactory.GetCodeAlgorithm(cb_chooseCode.Text);
+            label3.Text = code.Decode(rtb_codeword.Text);
         }
 
         private void bt_makeGrid_Click(object sender, EventArgs e)
@@ -35,7 +37,8 @@ namespace tk1
             dgv_adjacentClass.Rows.Clear();
             int rowsNumber = Int32.Parse(tb_row.Text);
             dgv_adjacentClass.ColumnCount = Int32.Parse(tb_column.Text);
-            
+            for(int i = 0; i < dgv_adjacentClass.ColumnCount; ++i)
+                dgv_adjacentClass.Columns[i].Width = 60;
             for (int i = 0; i < rowsNumber; ++i )
                 dgv_adjacentClass.Rows.Add();
         }
@@ -62,14 +65,24 @@ namespace tk1
 
         private void bt_do_Click(object sender, EventArgs e)
         {
-            string codeword = tb_codeWordForLast.Text;
+            /*string codeword = tb_codeWordForLast.Text;
+            codeword += evenParity.GetEven(codeword);
+            rtb_allError.Text = "";
             BinaryArythmetic binaryArythmetic = new BinaryArythmetic();
             int maxNumber = (int)Math.Pow(2, codeword.Length);
             for (int i = 0; i < maxNumber; ++i)
             {
                 string number = Convert.ToString(i,2);
                 rtb_allError.Text += binaryArythmetic.AddBinaryNumber(codeword, number) + '\n';
-            }
+            }*/
+        }
+
+        private void bt_decodeError_Click(object sender, EventArgs e)
+        {
+            /*string[] codewords = rtb_allError.Text.Split('\n');
+            rtb_checkError.Text = "";
+            foreach (string str in codewords)
+                rtb_checkError.Text += evenParity.Decode(str) + '\n';*/
         }
 
         

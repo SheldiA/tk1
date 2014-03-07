@@ -6,18 +6,21 @@ using System.Threading.Tasks;
 
 namespace tk1
 {
-    class EvenParity
+    class EvenParity: Code
     {
-        public string GetCodeWord(string message)
+        public override string GetCodeWord(string message)
         {
             string codeWord = "";
-            for (int i = 0; i < message.Length; ++i)
-                codeWord += Convert.ToString((int)message[i], 2);
+            if (isOnlyZeroAndOne(message))
+                codeWord = message;
+            else
+                for (int i = 0; i < message.Length; ++i)
+                    codeWord += Convert.ToString((int)message[i], 2);
             codeWord += GetEven(codeWord);
             return codeWord;
         }
 
-        public string Decode(string codeWord)
+        public override string Decode(string codeWord)
         {
             if (GetEven(codeWord) == '0')
                 return "no error";
@@ -25,7 +28,7 @@ namespace tk1
                 return "error";
         }
 
-        private char GetEven(string str)
+        public char GetEven(string str)
         {
             int count1 = 0;
             for (int i = 0; i < str.Length; ++i)
@@ -35,6 +38,19 @@ namespace tk1
                 return '0';
             else
                 return '1';
+        }
+
+        private bool isOnlyZeroAndOne(string str)
+        {
+            bool result = true;
+
+            for (int i = 0; i < str.Length; ++i )
+                if(str[i] != '0' && str[i] != '1')
+                {
+                    result = false;
+                    break;
+                }
+           return result;
         }
     }
 }

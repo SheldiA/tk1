@@ -7,3 +7,21 @@ D:\Project c#\tk\tk1\tk1\obj\Debug\tk1.Properties.Resources.resources
 D:\Project c#\tk\tk1\tk1\obj\Debug\tk1.csproj.GenerateResource.Cache
 D:\Project c#\tk\tk1\tk1\obj\Debug\tk1.exe
 D:\Project c#\tk\tk1\tk1\obj\Debug\tk1.pdb
+D:\projects c#\tk\tk1\tk1\bin\Debug\tk1.exe.config
+D:\projects c#\tk\tk1\tk1\obj\Debug\tk1.exe
+D:\projects c#\tk\tk1\tk1\obj\Debug\tk1.pdb
+D:\projects c#\tk\tk1\tk1\bin\Debug\tk1.exe
+D:\projects c#\tk\tk1\tk1\bin\Debug\tk1.pdb
+D:\projects c#\tk\tk1\tk1\obj\Debug\tk1.csprojResolveAssemblyReference.cache
+D:\projects c#\tk\tk1\tk1\obj\Debug\tk1.FormMain.resources
+D:\projects c#\tk\tk1\tk1\obj\Debug\tk1.Properties.Resources.resources
+D:\projects c#\tk\tk1\tk1\obj\Debug\tk1.csproj.GenerateResource.Cache
+D:\MyProjects\ProjectsC#\tk\tk1\tk1\bin\Debug\tk1.exe.config
+D:\MyProjects\ProjectsC#\tk\tk1\tk1\obj\Debug\tk1.exe
+D:\MyProjects\ProjectsC#\tk\tk1\tk1\obj\Debug\tk1.pdb
+D:\MyProjects\ProjectsC#\tk\tk1\tk1\bin\Debug\tk1.exe
+D:\MyProjects\ProjectsC#\tk\tk1\tk1\bin\Debug\tk1.pdb
+D:\MyProjects\ProjectsC#\tk\tk1\tk1\obj\Debug\tk1.csprojResolveAssemblyReference.cache
+D:\MyProjects\ProjectsC#\tk\tk1\tk1\obj\Debug\tk1.FormMain.resources
+D:\MyProjects\ProjectsC#\tk\tk1\tk1\obj\Debug\tk1.Properties.Resources.resources
+D:\MyProjects\ProjectsC#\tk\tk1\tk1\obj\Debug\tk1.csproj.GenerateResource.Cache
