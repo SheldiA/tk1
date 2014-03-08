@@ -8,7 +8,7 @@ namespace tk1
 {
     class TriangularCode:Code
     {
-        public readonly int maxBlockLength;
+        public int maxBlockLength;
         public readonly EvenParity evenParity;
 
         public TriangularCode(int n)
@@ -33,7 +33,7 @@ namespace tk1
 
         private char[][] GetTriangularArr(string str)
         {
-            int numRow = GetRowNumber(str.Length) + 1;
+            int numRow = GetRowNumber(str.Length) + 1;//если добавлять 0 в конец, можно удалить метод
             char[][] result = new char[numRow][];
             int curNumColumn = maxBlockLength;
             int curStrPos = 0;
@@ -92,7 +92,41 @@ namespace tk1
 
         public override string Decode(string codeWord)
         {
-            throw new NotImplementedException();
+            string result = "";
+            ++maxBlockLength;
+            int blockLength = Sum(maxBlockLength);
+            int numberBlock = (codeWord.Length % blockLength == 0) ? codeWord.Length / blockLength : codeWord.Length / blockLength + 1;
+            for (int count = 0; count < numberBlock; ++count )
+            {
+                int length = (count == numberBlock - 1) ? codeWord.Length - count * blockLength : blockLength;
+                string block = codeWord.Substring(count * blockLength, length);
+                int numRow = GetRowNumber(length);
+                char[][] evenArr = new char[numRow][];
+                int numColumn = maxBlockLength;
+                int curCodeWordPos = 0;
+                for (int i = 0; i < numRow; ++i )
+                {
+                    evenArr[i] = new char[numColumn];
+                    for (int j = 0; j < numColumn; ++j )
+                    {
+                        evenArr[i][j] = codeWord[curCodeWordPos];
+                        ++curCodeWordPos;
+                    }
+                    --numColumn;
+                }
+                for(int i = 0;i < numRow; ++i)
+                {
+                    string currStr = "";
+                    for (int j = 0; j < evenArr[i].Length - 1; ++j)
+                        currStr += evenArr[i][j];
+                    for (int j = 0; j < i; ++j)
+                        currStr += evenArr[j][evenArr[i].Length - 1];
+                    if(evenParity.GetEven(currStr) != evenArr[i][evenArr[i].Length - 1])
+                        result += ("error in " + i + " row");
+                }
+            }
+
+            return result;
         }
     }
 }
