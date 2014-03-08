@@ -32,7 +32,7 @@ namespace tk1
                     result = new RectangularCode(n);
                     break;
                 case "Triangular code":
-                    result = new TriangularCode();
+                    result = new TriangularCode(n);
                     break;
             }
 
