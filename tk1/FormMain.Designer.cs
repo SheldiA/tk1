@@ -34,6 +34,7 @@
             this.bt_decode = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.cb_chooseCode = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.lb_adjClassesCodeword = new System.Windows.Forms.Label();
@@ -52,7 +53,8 @@
             this.rtb_allError = new System.Windows.Forms.RichTextBox();
             this.tb_codeWordForLast = new System.Windows.Forms.TextBox();
             this.bt_do = new System.Windows.Forms.Button();
-            this.cb_chooseCode = new System.Windows.Forms.ComboBox();
+            this.tb_n = new System.Windows.Forms.TextBox();
+            this.lb_n = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -62,7 +64,7 @@
             // 
             // rtb_message
             // 
-            this.rtb_message.Location = new System.Drawing.Point(3, 64);
+            this.rtb_message.Location = new System.Drawing.Point(38, 64);
             this.rtb_message.Name = "rtb_message";
             this.rtb_message.Size = new System.Drawing.Size(121, 21);
             this.rtb_message.TabIndex = 0;
@@ -70,7 +72,7 @@
             // 
             // rtb_codeword
             // 
-            this.rtb_codeword.Location = new System.Drawing.Point(143, 23);
+            this.rtb_codeword.Location = new System.Drawing.Point(242, 33);
             this.rtb_codeword.Name = "rtb_codeword";
             this.rtb_codeword.Size = new System.Drawing.Size(141, 52);
             this.rtb_codeword.TabIndex = 1;
@@ -78,7 +80,7 @@
             // 
             // bt_getCode
             // 
-            this.bt_getCode.Location = new System.Drawing.Point(16, 91);
+            this.bt_getCode.Location = new System.Drawing.Point(38, 91);
             this.bt_getCode.Name = "bt_getCode";
             this.bt_getCode.Size = new System.Drawing.Size(94, 25);
             this.bt_getCode.TabIndex = 2;
@@ -88,7 +90,7 @@
             // 
             // bt_decode
             // 
-            this.bt_decode.Location = new System.Drawing.Point(300, 52);
+            this.bt_decode.Location = new System.Drawing.Point(405, 62);
             this.bt_decode.Name = "bt_decode";
             this.bt_decode.Size = new System.Drawing.Size(88, 23);
             this.bt_decode.TabIndex = 3;
@@ -109,6 +111,8 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.lb_n);
+            this.tabPage1.Controls.Add(this.tb_n);
             this.tabPage1.Controls.Add(this.cb_chooseCode);
             this.tabPage1.Controls.Add(this.label3);
             this.tabPage1.Controls.Add(this.rtb_message);
@@ -123,10 +127,23 @@
             this.tabPage1.Text = "EvenParity";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
+            // cb_chooseCode
+            // 
+            this.cb_chooseCode.FormattingEnabled = true;
+            this.cb_chooseCode.Items.AddRange(new object[] {
+            "Repetition code",
+            "Even parity code",
+            "Rectangular code",
+            "Triangular code"});
+            this.cb_chooseCode.Location = new System.Drawing.Point(101, 22);
+            this.cb_chooseCode.Name = "cb_chooseCode";
+            this.cb_chooseCode.Size = new System.Drawing.Size(121, 21);
+            this.cb_chooseCode.TabIndex = 5;
+            // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(315, 23);
+            this.label3.Location = new System.Drawing.Point(432, 25);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(35, 13);
             this.label3.TabIndex = 4;
@@ -301,18 +318,21 @@
             this.bt_do.UseVisualStyleBackColor = true;
             this.bt_do.Click += new System.EventHandler(this.bt_do_Click);
             // 
-            // cb_chooseCode
+            // tb_n
             // 
-            this.cb_chooseCode.FormattingEnabled = true;
-            this.cb_chooseCode.Items.AddRange(new object[] {
-            "Repetition code",
-            "Even parity code",
-            "Rectangular code",
-            "Triangular code"});
-            this.cb_chooseCode.Location = new System.Drawing.Point(3, 23);
-            this.cb_chooseCode.Name = "cb_chooseCode";
-            this.cb_chooseCode.Size = new System.Drawing.Size(121, 21);
-            this.cb_chooseCode.TabIndex = 5;
+            this.tb_n.Location = new System.Drawing.Point(26, 23);
+            this.tb_n.Name = "tb_n";
+            this.tb_n.Size = new System.Drawing.Size(32, 20);
+            this.tb_n.TabIndex = 6;
+            // 
+            // lb_n
+            // 
+            this.lb_n.AutoSize = true;
+            this.lb_n.Location = new System.Drawing.Point(14, 9);
+            this.lb_n.Name = "lb_n";
+            this.lb_n.Size = new System.Drawing.Size(13, 13);
+            this.lb_n.TabIndex = 7;
+            this.lb_n.Text = "n";
             // 
             // FormMain
             // 
@@ -361,6 +381,8 @@
         private System.Windows.Forms.Button bt_decodeError;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ComboBox cb_chooseCode;
+        private System.Windows.Forms.Label lb_n;
+        private System.Windows.Forms.TextBox tb_n;
     }
 }
 

@@ -22,13 +22,13 @@ namespace tk1
 
         private void bt_getCode_Click(object sender, EventArgs e)
         {
-            Code code = codeAlgorithmFactory.GetCodeAlgorithm(cb_chooseCode.Text);
+            Code code = codeAlgorithmFactory.GetCodeAlgorithm(cb_chooseCode.Text, Int32.Parse(tb_n.Text));
             rtb_codeword.Text = code.GetCodeWord(rtb_message.Text);
         }
 
         private void bt_decode_Click(object sender, EventArgs e)
         {
-            Code code = codeAlgorithmFactory.GetCodeAlgorithm(cb_chooseCode.Text);
+            Code code = codeAlgorithmFactory.GetCodeAlgorithm(cb_chooseCode.Text,Int32.Parse(tb_n.Text));
             label3.Text = code.Decode(rtb_codeword.Text);
         }
 

@@ -16,36 +16,23 @@ namespace tk1
 
         protected CodeAlgorithmFactory() { }
 
-        private RepetitionCode repetitionCode = null;
-        private EvenParity evenParityCode = null;
-        private RectangularCode rectangularCode = null;
-        private TriangularCode triangularCode = null;
-
-        public Code GetCodeAlgorithm(string name)
+        public Code GetCodeAlgorithm(string name,int n)
         {
             Code result = null;
 
             switch(name)
             {
                 case "Repetition code":
-                    if (repetitionCode == null)
-                        repetitionCode = new RepetitionCode();
-                    result = repetitionCode;
+                    result = new RepetitionCode(n);
                     break;
                 case "Even parity code":
-                    if (evenParityCode == null)
-                        evenParityCode = new EvenParity();
-                    result = evenParityCode;
+                    result = new EvenParity();
                     break;
                 case "Rectangular code":
-                    if (rectangularCode == null)
-                        rectangularCode = new RectangularCode();
-                    result = rectangularCode;
+                    result = new RectangularCode();
                     break;
                 case "Triangular code":
-                    if (triangularCode == null)
-                        triangularCode = new TriangularCode();
-                    result = triangularCode;
+                    result = new TriangularCode();
                     break;
             }
 
