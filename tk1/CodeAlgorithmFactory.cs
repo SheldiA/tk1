@@ -29,7 +29,7 @@ namespace tk1
                     result = new EvenParity();
                     break;
                 case "Rectangular code":
-                    result = new RectangularCode();
+                    result = new RectangularCode(n);
                     break;
                 case "Triangular code":
                     result = new TriangularCode();

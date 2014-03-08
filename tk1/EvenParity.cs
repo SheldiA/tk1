@@ -10,13 +10,8 @@ namespace tk1
     {
         public override string GetCodeWord(string message)
         {
-            string codeWord = "";
-            if (isOnlyZeroAndOne(message))
-                codeWord = message;
-            else
-                for (int i = 0; i < message.Length; ++i)
-                    codeWord += Convert.ToString((int)message[i], 2);
-            codeWord += GetEven(codeWord);
+            string codeWord = "";            
+            codeWord = message + GetEven(codeWord);
             return codeWord;
         }
 
