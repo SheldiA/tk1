@@ -21,64 +21,87 @@ namespace tk1
         {
             string result = "";
             int blockLength = Sum(maxBlockLength);
-            int numberBlock = (message.Length % blockLength == 0) ? message.Length / blockLength : message.Length / blockLength + 1;
-            for (int count = 0; count < numberBlock; ++count )
+            message = AlignStrByBlock(message, blockLength);
+            int numberBlock = message.Length / blockLength;
+            for (int count = 0; count < numberBlock; ++count)
             {
-                int length = (count == numberBlock - 1) ? message.Length - count * blockLength : blockLength;
-                char[][] evenArr = GetTriangularArr(message.Substring(count * blockLength, length));
-                result += GetStrFromArr(evenArr);
+                string block = message.Substring(count * blockLength, blockLength);
+                char[][] evenArr = GetTriangularArr(block,true);
+                evenArr = AddEven(evenArr);
+                result += GetStrFromArr(evenArr,false);
             }
             return result;
         }
 
-        private char[][] GetTriangularArr(string str)
+        public override string Decode(string codeWord)
         {
-            int numRow = GetRowNumber(str.Length) + 1;//если добавлять 0 в конец, можно удалить метод
+            string result = "";
+            int blockLength = Sum(maxBlockLength + 1);
+            codeWord = AlignStrByBlock(codeWord, blockLength);
+            int numberBlock = codeWord.Length / blockLength;
+            for (int count = 0; count < numberBlock; ++count)
+            {
+                string block = codeWord.Substring(count * blockLength, blockLength);
+                char[][] evenArr = GetTriangularArr(block, false);
+                evenArr = FixErrorInBlock(evenArr);
+                result += GetStrFromArr(evenArr,true);
+            }
+
+            return result;
+        }
+
+
+        private char[][] GetTriangularArr(string str, bool needAdditionElem)
+        {
+            int numRow = maxBlockLength + 1;
             char[][] result = new char[numRow][];
             int curNumColumn = maxBlockLength;
             int curStrPos = 0;
-            for (int i = 0; i < numRow; ++i )
+            for (int i = 0; i < numRow; ++i)
             {
                 result[i] = new char[curNumColumn + 1];
-                string curStr = "";
-                for (int j = 0; j < curNumColumn; ++j )
+                for (int j = 0; j < curNumColumn; ++j)
                 {
                     result[i][j] = str[curStrPos];
-                    curStr += str[curStrPos];
                     ++curStrPos;
                 }
-                for (int row = 0; row < i; ++row )
-                    curStr += result[row][curNumColumn];
-                result[i][curNumColumn] = evenParity.GetEven(curStr);
+                if (!needAdditionElem)
+                {
+                    result[i][curNumColumn] = str[curStrPos];
+                    ++curStrPos;
+                }
                 --curNumColumn;
             }
 
             return result;
         }
 
-        private string GetStrFromArr(char[][] arr)
+        private char[][] AddEven(char[][] arr)
         {
-            string result = "";
+            for (int i = 0; i < arr.GetLength(0); ++i)
+            {
+                string curStr = "";
+                for (int j = 0; j < arr[i].Length - 1; ++j)
+                    curStr += arr[i][j];
+                for (int row = 0; row < i; ++row)
+                    curStr += arr[row][arr[i].Length - 1];
+                arr[i][arr[i].Length - 1] = evenParity.GetEven(curStr);
+            }
 
-            for(int i = 0; i < arr.GetLength(0); ++i)
-                for(int j = 0; j < arr[i].Length; ++j)
-                    result += arr[i][j];
-
-            return result;
+            return arr;
         }
 
-        private int GetRowNumber(int length)
+        private string GetStrFromArr(char[][] arr,bool isDeleteEven)
         {
-            int result = 0;
-            int sum = 0;
-
-            for (int i = maxBlockLength; i > 0; --i)
+            string result = "";
+            int numRow = (isDeleteEven) ? arr.GetLength(0) - 1 : arr.GetLength(0);
+            for (int i = 0; i < numRow; ++i)
             {
-                ++result;
-                sum += i;
-                if (sum >= length)
-                    break;
+                int numColumn = (isDeleteEven) ? arr[i].Length - 1 : arr[i].Length;
+                for (int j = 0; j < numColumn; ++j)
+                    result += arr[i][j];
             }
+
             return result;
         }
 
@@ -90,43 +113,36 @@ namespace tk1
             return sum;
         }
 
-        public override string Decode(string codeWord)
+        private string AlignStrByBlock(string str,int lengthBlock)
         {
-            string result = "";
-            ++maxBlockLength;
-            int blockLength = Sum(maxBlockLength);
-            int numberBlock = (codeWord.Length % blockLength == 0) ? codeWord.Length / blockLength : codeWord.Length / blockLength + 1;
-            for (int count = 0; count < numberBlock; ++count )
+            while (str.Length % lengthBlock != 0)
+                str = "0" + str;
+            return str;
+        }
+
+        private char[][] FixErrorInBlock(char[][] block)
+        {
+            int firstErr = -1;
+            for (int i = 0; i < block.GetLength(0); ++i)
             {
-                int length = (count == numberBlock - 1) ? codeWord.Length - count * blockLength : blockLength;
-                string block = codeWord.Substring(count * blockLength, length);
-                int numRow = GetRowNumber(length);
-                char[][] evenArr = new char[numRow][];
-                int numColumn = maxBlockLength;
-                int curCodeWordPos = 0;
-                for (int i = 0; i < numRow; ++i )
+                string currStr = "";
+                for (int j = 0; j < block[i].Length - 1; ++j)
+                    currStr += block[i][j];
+                for (int j = 0; j < i; ++j)
+                    currStr += block[j][block[i].Length - 1];
+                if (evenParity.GetEven(currStr) != block[i][block[i].Length - 1])
                 {
-                    evenArr[i] = new char[numColumn];
-                    for (int j = 0; j < numColumn; ++j )
+                    if (firstErr == -1)
+                        firstErr = i;
+                    else
                     {
-                        evenArr[i][j] = codeWord[curCodeWordPos];
-                        ++curCodeWordPos;
+                        block[firstErr][block[i].Length - 1] = (block[firstErr][block[i].Length - 1] == '0') ? '1' : '0';
+                        break;
                     }
-                    --numColumn;
-                }
-                for(int i = 0;i < numRow; ++i)
-                {
-                    string currStr = "";
-                    for (int j = 0; j < evenArr[i].Length - 1; ++j)
-                        currStr += evenArr[i][j];
-                    for (int j = 0; j < i; ++j)
-                        currStr += evenArr[j][evenArr[i].Length - 1];
-                    if(evenParity.GetEven(currStr) != evenArr[i][evenArr[i].Length - 1])
-                        result += ("error in " + i + " row");
                 }
             }
 
-            return result;
+            return block;
         }
     }
 }

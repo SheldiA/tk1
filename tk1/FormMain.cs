@@ -29,7 +29,7 @@ namespace tk1
         private void bt_decode_Click(object sender, EventArgs e)
         {
             Code code = codeAlgorithmFactory.GetCodeAlgorithm(cb_chooseCode.Text,Int32.Parse(tb_n.Text));
-            label3.Text = code.Decode(rtb_codeword.Text);
+            rtb_decode.Text = code.Decode(rtb_codeword.Text);
         }
 
         private void bt_makeGrid_Click(object sender, EventArgs e)
