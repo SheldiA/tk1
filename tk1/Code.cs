@@ -10,5 +10,7 @@ namespace tk1
     {
         public abstract string GetCodeWord(string message);
         public abstract string Decode(string codeWord);
+
+        
     }
 }

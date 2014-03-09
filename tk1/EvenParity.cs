@@ -34,18 +34,5 @@ namespace tk1
             else
                 return '1';
         }
-
-        private bool isOnlyZeroAndOne(string str)
-        {
-            bool result = true;
-
-            for (int i = 0; i < str.Length; ++i )
-                if(str[i] != '0' && str[i] != '1')
-                {
-                    result = false;
-                    break;
-                }
-           return result;
-        }
     }
 }
