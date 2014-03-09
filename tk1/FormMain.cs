@@ -32,29 +32,23 @@ namespace tk1
             rtb_decode.Text = code.Decode(rtb_codeword.Text);
         }
 
-        private void bt_makeGrid_Click(object sender, EventArgs e)
-        {
-            dgv_adjacentClass.Rows.Clear();
-            int rowsNumber = Int32.Parse(tb_row.Text);
-            dgv_adjacentClass.ColumnCount = Int32.Parse(tb_column.Text);
-            for(int i = 0; i < dgv_adjacentClass.ColumnCount; ++i)
-                dgv_adjacentClass.Columns[i].Width = 60;
-            for (int i = 0; i < rowsNumber; ++i )
-                dgv_adjacentClass.Rows.Add();
-        }
-
         private void bt_fill_Click(object sender, EventArgs e)
         {
-            List<string> errorVector = new List<string>();
-            List<string> codeWords = new List<string>();
-            for (int i = 0; i < dgv_adjacentClass.RowCount; ++i)
-                errorVector.Add(dgv_adjacentClass[0, i].Value.ToString());
+
+            dgv_adjacentClass.Rows.Clear();
+            int n = Int32.Parse(tb_adjacent_n.Text);
+            int k = Int32.Parse(tb_adjacent_k.Text);
+            int rowsNumber = (int)Math.Pow(2,n-k);
+            dgv_adjacentClass.ColumnCount = (int)Math.Pow(2, k);
             for (int i = 0; i < dgv_adjacentClass.ColumnCount; ++i)
-                codeWords.Add(dgv_adjacentClass[i,0].Value.ToString());
-            tac = new TableAdjacentClasses(codeWords, errorVector);
-            for (int j = 1; j < dgv_adjacentClass.ColumnCount; ++j)
-                for (int i = 1; i < dgv_adjacentClass.RowCount; ++i)
-                    dgv_adjacentClass[j,i].Value = tac.Table[i, j];
+                dgv_adjacentClass.Columns[i].Width = 60;
+            for (int i = 0; i < rowsNumber; ++i)
+                dgv_adjacentClass.Rows.Add();
+
+            tac = new TableAdjacentClasses(n,k);
+            for (int i = 0; i < tac.Table.GetLength(0); ++i )
+                for (int j = 0; j < tac.Table.GetLength(1); ++j)
+                    dgv_adjacentClass[j, i].Value = tac.Table[i, j];
         }
 
         private void bt_adjClassesDecode_Click(object sender, EventArgs e)

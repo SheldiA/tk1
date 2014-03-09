@@ -44,9 +44,8 @@
             this.tb_incomingMessage = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.bt_fill = new System.Windows.Forms.Button();
-            this.bt_makeGrid = new System.Windows.Forms.Button();
-            this.tb_column = new System.Windows.Forms.TextBox();
-            this.tb_row = new System.Windows.Forms.TextBox();
+            this.tb_adjacent_k = new System.Windows.Forms.TextBox();
+            this.tb_adjacent_n = new System.Windows.Forms.TextBox();
             this.dgv_adjacentClass = new System.Windows.Forms.DataGridView();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.rtb_checkError = new System.Windows.Forms.RichTextBox();
@@ -55,6 +54,7 @@
             this.tb_codeWordForLast = new System.Windows.Forms.TextBox();
             this.bt_do = new System.Windows.Forms.Button();
             this.rtb_decode = new System.Windows.Forms.RichTextBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -158,15 +158,15 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.label3);
             this.tabPage2.Controls.Add(this.lb_adjClassesCodeword);
             this.tabPage2.Controls.Add(this.bt_adjClassesDecode);
             this.tabPage2.Controls.Add(this.label2);
             this.tabPage2.Controls.Add(this.tb_incomingMessage);
             this.tabPage2.Controls.Add(this.label1);
             this.tabPage2.Controls.Add(this.bt_fill);
-            this.tabPage2.Controls.Add(this.bt_makeGrid);
-            this.tabPage2.Controls.Add(this.tb_column);
-            this.tabPage2.Controls.Add(this.tb_row);
+            this.tabPage2.Controls.Add(this.tb_adjacent_k);
+            this.tabPage2.Controls.Add(this.tb_adjacent_n);
             this.tabPage2.Controls.Add(this.dgv_adjacentClass);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
@@ -213,15 +213,15 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(43, 15);
+            this.label1.Location = new System.Drawing.Point(16, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(12, 13);
+            this.label1.Size = new System.Drawing.Size(19, 13);
             this.label1.TabIndex = 5;
-            this.label1.Text = "x";
+            this.label1.Text = "n: ";
             // 
             // bt_fill
             // 
-            this.bt_fill.Location = new System.Drawing.Point(27, 79);
+            this.bt_fill.Location = new System.Drawing.Point(19, 117);
             this.bt_fill.Name = "bt_fill";
             this.bt_fill.Size = new System.Drawing.Size(43, 22);
             this.bt_fill.TabIndex = 4;
@@ -229,29 +229,19 @@
             this.bt_fill.UseVisualStyleBackColor = true;
             this.bt_fill.Click += new System.EventHandler(this.bt_fill_Click);
             // 
-            // bt_makeGrid
+            // tb_adjacent_k
             // 
-            this.bt_makeGrid.Location = new System.Drawing.Point(27, 40);
-            this.bt_makeGrid.Name = "bt_makeGrid";
-            this.bt_makeGrid.Size = new System.Drawing.Size(43, 22);
-            this.bt_makeGrid.TabIndex = 3;
-            this.bt_makeGrid.Text = "make";
-            this.bt_makeGrid.UseVisualStyleBackColor = true;
-            this.bt_makeGrid.Click += new System.EventHandler(this.bt_makeGrid_Click);
+            this.tb_adjacent_k.Location = new System.Drawing.Point(43, 47);
+            this.tb_adjacent_k.Name = "tb_adjacent_k";
+            this.tb_adjacent_k.Size = new System.Drawing.Size(26, 20);
+            this.tb_adjacent_k.TabIndex = 2;
             // 
-            // tb_column
+            // tb_adjacent_n
             // 
-            this.tb_column.Location = new System.Drawing.Point(59, 13);
-            this.tb_column.Name = "tb_column";
-            this.tb_column.Size = new System.Drawing.Size(26, 20);
-            this.tb_column.TabIndex = 2;
-            // 
-            // tb_row
-            // 
-            this.tb_row.Location = new System.Drawing.Point(10, 13);
-            this.tb_row.Name = "tb_row";
-            this.tb_row.Size = new System.Drawing.Size(26, 20);
-            this.tb_row.TabIndex = 1;
+            this.tb_adjacent_n.Location = new System.Drawing.Point(43, 6);
+            this.tb_adjacent_n.Name = "tb_adjacent_n";
+            this.tb_adjacent_n.Size = new System.Drawing.Size(26, 20);
+            this.tb_adjacent_n.TabIndex = 1;
             // 
             // dgv_adjacentClass
             // 
@@ -333,6 +323,15 @@
             this.rtb_decode.TabIndex = 8;
             this.rtb_decode.Text = "";
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(16, 50);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(19, 13);
+            this.label3.TabIndex = 10;
+            this.label3.Text = "k: ";
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -364,9 +363,8 @@
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button bt_fill;
-        private System.Windows.Forms.Button bt_makeGrid;
-        private System.Windows.Forms.TextBox tb_column;
-        private System.Windows.Forms.TextBox tb_row;
+        private System.Windows.Forms.TextBox tb_adjacent_k;
+        private System.Windows.Forms.TextBox tb_adjacent_n;
         private System.Windows.Forms.DataGridView dgv_adjacentClass;
         private System.Windows.Forms.Label lb_adjClassesCodeword;
         private System.Windows.Forms.Button bt_adjClassesDecode;
@@ -382,6 +380,7 @@
         private System.Windows.Forms.Label lb_n;
         private System.Windows.Forms.TextBox tb_n;
         private System.Windows.Forms.RichTextBox rtb_decode;
+        private System.Windows.Forms.Label label3;
     }
 }
 

@@ -8,7 +8,7 @@ namespace tk1
 {
     class BinaryArythmetic
     {
-        public string AddBinaryNumber(string first, string second)
+        public string Xor(string first, string second)
         {
             int size = Math.Max(first.Length, second.Length);
             first = AddZero(first, size);
@@ -16,6 +16,19 @@ namespace tk1
             string result = "";
             for (int i = 0; i < size; ++i)
                 result += (first[i] == second[i]) ? '0' : '1';
+            return result;
+        }
+
+        public List<string> GenerateAllBinaryByLength(int length)
+        {
+            int number = (int)Math.Pow(2, length);
+            List<string> result = new List<string>(length);
+            for (int i = 0; i < number; ++i)
+            {
+                string value = Convert.ToString(i, 2);
+                value = AddZero(value, length);
+                result.Add(value);
+            }
             return result;
         }
 
