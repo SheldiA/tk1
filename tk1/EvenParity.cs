@@ -10,8 +10,8 @@ namespace tk1
     {
         public override string GetCodeWord(string message)
         {
-            string codeWord = "";            
-            codeWord = message + GetEven(codeWord);
+            string codeWord = "";
+            codeWord = message + GetEven(message);
             return codeWord;
         }
 

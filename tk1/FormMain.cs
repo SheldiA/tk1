@@ -59,24 +59,23 @@ namespace tk1
 
         private void bt_do_Click(object sender, EventArgs e)
         {
-            /*string codeword = tb_codeWordForLast.Text;
-            codeword += evenParity.GetEven(codeword);
             rtb_allError.Text = "";
             BinaryArythmetic binaryArythmetic = new BinaryArythmetic();
-            int maxNumber = (int)Math.Pow(2, codeword.Length);
-            for (int i = 0; i < maxNumber; ++i)
-            {
-                string number = Convert.ToString(i,2);
-                rtb_allError.Text += binaryArythmetic.AddBinaryNumber(codeword, number) + '\n';
-            }*/
+            Code code = codeAlgorithmFactory.GetCodeAlgorithm(cb_chooseCode.Text, Int32.Parse(tb_n.Text));
+            string codeWord = code.GetCodeWord(rtb_message.Text);
+            List<string> allChanges = binaryArythmetic.GenerateAllBinaryByLength(codeWord.Length);
+            foreach (String element in allChanges)
+                rtb_allError.Text += (binaryArythmetic.Xor(codeWord, element) + '\n');
+            
         }
 
         private void bt_decodeError_Click(object sender, EventArgs e)
         {
-            /*string[] codewords = rtb_allError.Text.Split('\n');
+            string[] codewords = rtb_allError.Text.Split('\n');
             rtb_checkError.Text = "";
+            Code code = codeAlgorithmFactory.GetCodeAlgorithm(cb_chooseCode.Text, Int32.Parse(tb_n.Text));
             foreach (string str in codewords)
-                rtb_checkError.Text += evenParity.Decode(str) + '\n';*/
+                rtb_checkError.Text += (code.Decode(str) + '\n');
         }
 
         
